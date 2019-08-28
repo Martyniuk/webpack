@@ -1,40 +1,49 @@
+// Core
 const webpack = require('webpack');
-const MemFs = require('memory-fs');
+const devServer = require('webpack-dev-server');
+const hot = require('webpack-hot-middleware');
 const chalk = require('chalk');
+const { resolve } = require('path');
 
+// Config
 const getConfig = require('./webpack.config');
 
+// Constants
+const { HOST, PORT } = require('./constants');
+
 const compiler = webpack(getConfig());
-const memFs = new MemFs();
 
-compiler.outputFileSystem = memFs;
+const server = new devServer(compiler, {
+    // lifecycle hook of devserver, gives chance to register middleware
+    host: HOST,
+    port: PORT,
+    // optimizes work with SPA, return page to index.js by default
+    historyApiFallback: true,
+    // Error will be shown inside Browser page
+    overlay: true,
+    // cleans up output of console
+    quiet: true,
+    // no output at ALL
+    clientLogLevel: 'none',
+    // total Silence 
+    noInfo: true,
+    after: app => {
+        app.use(
+            hot(compiler, {
+                // additional options can be given
+                log: false
+            })
+        )
+    }
+})
 
-const watcher = compiler.watch(
-    { ignored: ['node_modules'] },
-    (error, stats) => {
-        console.log(chalk.greenBright('✔︎ webpack is watching...'));
-
-        if (error) {
-            console.error('Error:', error.stack || error);
-
-            if (error.details) {
-                console.error(error.stack);
-            }
-
-            return;
-        }
-        
-        const info = stats.toString('errors-only');
-
-        console.log(info);
-
-        if (stats.hasErrors()) {
-            console.log(chalk.redBright('» Error ❗'));
-            console.error(info);
-        }
-
-        if (stats.hasWarnings()) {
-            console.log(chalk.yellowBright('› Warning ❕'));
-            console.warn(info);
-        }
+server.listen(PORT, HOST, () => {
+    console.log(
+        `${
+            chalk.greenBright(
+                '⟹  Server is listening on')} ${chalk.blueBright(`http://${HOST}:${PORT}`
+            )
+        }`
+    
+    );
 });

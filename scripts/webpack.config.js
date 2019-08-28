@@ -6,7 +6,10 @@ module.exports = () => {
     
     return {
         mode: 'development',
-        entry: resolve(__dirname, '../src'),
+        entry: [
+            'webpack-hot-middleware/client',
+            resolve(__dirname, '../src')
+        ],
         output: {
             path: resolve(__dirname, '../dist'),
             filename: 'bundle.js'
