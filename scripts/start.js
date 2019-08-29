@@ -6,12 +6,12 @@ const chalk = require('chalk');
 const { resolve } = require('path');
 
 // Config
-const getConfig = require('./webpack.config');
+const getDevConfig = require('./config/webpack.dev');
 
 // Constants
 const { HOST, PORT } = require('./constants');
 
-const compiler = webpack(getConfig());
+const compiler = webpack(getDevConfig());
 
 const server = new devServer(compiler, {
     // lifecycle hook of devserver, gives chance to register middleware

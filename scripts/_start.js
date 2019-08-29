@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const MemFs = require('memory-fs');
 const chalk = require('chalk');
 // Config
-const getConfig = require('./webpack.config');
+const getConfig = require('./config/webpack.common');
 
 const compiler = webpack(getConfig());
 const memFs = new MemFs();

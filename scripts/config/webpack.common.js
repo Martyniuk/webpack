@@ -1,22 +1,23 @@
+// Core
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { resolve } = require('path');
+
+// Instruments
+const { BUILD } = require('../constants');
 
 module.exports = () => {
     
     return {
-        mode: 'development',
-        entry: [
-            'webpack-hot-middleware/client',
-            resolve(__dirname, '../src')
-        ],
         output: {
-            path: resolve(__dirname, '../dist'),
+            path:     BUILD,
             filename: 'bundle.js'
         },
         devtool: false,
         module: {
             rules: [
+                {
+                    test: /\.js$/,
+                    use: 'babel-loader'
+                },
                 {
                     test: /\.css$/,
                     use: [ 'style-loader','css-loader' ]
@@ -28,7 +29,6 @@ module.exports = () => {
                 title: 'Dashboard',
                 template: './static/template.html'
             }),
-            new CleanWebpackPlugin()
         ]
     };
 }

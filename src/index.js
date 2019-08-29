@@ -4,7 +4,7 @@ console.log('<-------------- hello from index.js');
 
 function addChild() {
     const element = document.createElement('div');
-    element.innerHTML = 'Text';
+    element.innerHTML = 'Texxt';
 
     return element;
 }
