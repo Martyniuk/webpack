@@ -1,12 +1,15 @@
-import './theme/style.css';
+// --->   CSS
 
-console.log('<-------------- hello from index.js');
+// ---> REACT
+import "./components";
 
-function addChild() {
-    const element = document.createElement('div');
-    element.innerHTML = 'Texxt';
+// --->  DOM
 
-    return element;
-}
+// function addChild() {
+//   const element = document.createElement("div");
+//   element.innerHTML = "Teexxt";
 
-document.body.appendChild(addChild());
+//   return element;
+// }
+
+// document.body.appendChild(addChild());
