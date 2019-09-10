@@ -1,15 +1,15 @@
 // Core
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const merge = require("webpack-merge");
 
 // Instruments
 const { SOURCE } = require("../constants");
 const getCommonConfig = require("./webpack.common");
+const { cleanBuildDirectory } = require("../modules/utils");
 
 module.exports = () => {
   return merge(getCommonConfig(), {
-    mode: "development",
+    mode: "production",
     entry: SOURCE,
-    plugins: [new CleanWebpackPlugin()]
+    plugins: [cleanBuildDirectory()]
   });
 };

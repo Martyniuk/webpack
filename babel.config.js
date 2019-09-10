@@ -1,4 +1,5 @@
 module.exports = api => {
+  console.log("top babel");
   // cache babel config
   const env = api.env();
   // api.cache.using(() => env === 'development');
@@ -16,9 +17,10 @@ module.exports = api => {
         "@babel/preset-env",
         {
           spec: true,
-          loose: false
+          loose: false,
           // debug: false
-          // modules: false,
+          modules: false
+          // modules: "commonjs"
         }
       ]
     ],
