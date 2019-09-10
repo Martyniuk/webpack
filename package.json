@@ -30,6 +30,7 @@
     "memory-fs": "^0.4.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
+    "react-dev-utils": "^9.0.3",
     "react-hot-loader": "^4.12.12",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.2",
