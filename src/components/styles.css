@@ -1,3 +1,13 @@
 .hello {
   color: greenyellow;
 }
+
+.title {
+  color: #000;
+}
+
+.vesselWrapper {
+  width: 400px;
+  height: 400px;
+  background-color: beige;
+}

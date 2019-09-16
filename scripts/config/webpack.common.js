@@ -5,7 +5,13 @@ const merge = require("webpack-merge");
 const { BUILD } = require("../constants");
 const { loadJavaScript } = require("../modules/javascript");
 const { loadCSS } = require("../modules/css");
-const { loadFonts, connectHTML } = require("../modules/assets");
+const {
+  loadImages,
+  loadFonts,
+  connectHTML,
+  loadSvgForCSS,
+  loadSvgForJS
+} = require("../modules/assets");
 
 module.exports = () => {
   return merge({
@@ -14,7 +20,14 @@ module.exports = () => {
       filename: "./js/bundle.js"
     },
     module: {
-      rules: [loadJavaScript(), loadCSS(), loadFonts()]
+      rules: [
+        loadJavaScript(),
+        loadCSS(),
+        loadFonts(),
+        loadImages(),
+        loadSvgForCSS(),
+        loadSvgForJS()
+      ]
     },
     plugins: [
       connectHTML()
