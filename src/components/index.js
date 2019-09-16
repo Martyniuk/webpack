@@ -6,9 +6,10 @@ import { render } from "react-dom";
 
 class Ok extends PureComponent {
   render() {
+    // throw new Error();
     return (
       <>
-        <h1 className={Styles.hello}>Hello 111!!</h1>
+        <h1 className={Styles.hello}>Hello 11!!</h1>
         <h1 className={Styles.hello}>Hello 11!!</h1>
       </>
     );

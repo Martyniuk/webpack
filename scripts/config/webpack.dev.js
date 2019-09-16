@@ -12,6 +12,7 @@ module.exports = async () => {
   return merge(getCommonConfig(), {
     mode: "development",
     entry: ["webpack-hot-middleware/client?reload=true&quiet=true", SOURCE],
+    devtool: "eval-source-map",
     devServer: {
       host: HOST,
       port: suggestedPort

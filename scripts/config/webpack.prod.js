@@ -8,8 +8,9 @@ const { cleanBuildDirectory } = require("../modules/utils");
 
 module.exports = () => {
   return merge(getCommonConfig(), {
-    mode: "production",
+    mode: "development", // interim for testing purpose
     entry: SOURCE,
+    devtool: false,
     plugins: [cleanBuildDirectory()]
   });
 };

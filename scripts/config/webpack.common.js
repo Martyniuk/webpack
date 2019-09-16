@@ -1,27 +1,27 @@
 // Core
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const merge = require("webpack-merge");
 
 // Instruments
 const { BUILD } = require("../constants");
 const { loadJavaScript } = require("../modules/javascript");
 const { loadCSS } = require("../modules/css");
+const { loadFonts, connectHTML } = require("../modules/assets");
 
 module.exports = () => {
   return merge({
     output: {
       path: BUILD,
-      filename: "bundle.js"
+      filename: "./js/bundle.js"
     },
-    devtool: false,
     module: {
-      rules: [loadJavaScript(), loadCSS()]
+      rules: [loadJavaScript(), loadCSS(), loadFonts()]
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        title: "Dashboard",
-        template: "./static/template.html"
-      })
+      connectHTML()
+      // new HtmlWebpackPlugin({
+      //   title: "Dashboard",
+      //   template: "./static/template.html"
+      // })
     ]
   });
 };
