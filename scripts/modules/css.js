@@ -1,5 +1,6 @@
 // Core
 const env = require("postcss-preset-env");
+const fontMagician = require("postcss-font-magician");
 // Instrumets
 const chalk = require("chalk");
 
@@ -26,6 +27,9 @@ exports.loadCSS = () => {
           plugins: [
             env({
               stage: 0
+            }),
+            fontMagician({
+              protocol: "https:" // what it does? - generates fontface automaticaly, magic?
             })
           ]
         }
