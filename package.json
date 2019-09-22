@@ -6,6 +6,8 @@
   "scripts": {
     "build": "cross-env-shell NODE_ENV=production node \"./scripts/build.js\"",
     "start": "cross-env-shell NODE_ENV=development node \"./scripts/start.js\"",
+    "build:analyze": "run-s build analyze",
+    "analyze": "webpack-bundle-analyzer \"./dist/stats.json\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -30,6 +32,7 @@
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
     "memory-fs": "^0.4.1",
+    "npm-run-all": "^4.1.5",
     "postcss-font-magician": "^2.2.2",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
@@ -37,6 +40,7 @@
     "react-hot-loader": "^4.12.12",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.2",
+    "webpack-bundle-analyzer": "^3.5.1",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
     "webpack-dev-server-waitpage": "^1.0.0",

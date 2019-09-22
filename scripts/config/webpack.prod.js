@@ -4,13 +4,16 @@ const merge = require("webpack-merge");
 // Instruments
 const { SOURCE } = require("../constants");
 const getCommonConfig = require("./webpack.common");
-const { cleanBuildDirectory } = require("../modules/utils");
+const {
+  cleanBuildDirectory,
+  connectBundleAnalyzer
+} = require("../modules/utils");
 
 module.exports = () => {
   return merge(getCommonConfig(), {
-    mode: "development", // interim for testing purpose
+    mode: "production", // development interim for testing purpose
     entry: SOURCE,
     devtool: false,
-    plugins: [cleanBuildDirectory()]
+    plugins: [cleanBuildDirectory(), connectBundleAnalyzer()]
   });
 };
