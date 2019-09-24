@@ -8,11 +8,13 @@ const {
   cleanBuildDirectory,
   connectBundleAnalyzer
 } = require("../modules/utils");
+const { optimizeModules } = require("../modules/optimization");
 
 module.exports = () => {
   return merge(getCommonConfig(), {
-    mode: "production", // development interim for testing purpose
+    mode: "none", // none interim for testing purpose
     entry: SOURCE,
+    optimization: optimizeModules(),
     devtool: false,
     plugins: [cleanBuildDirectory(), connectBundleAnalyzer()]
   });

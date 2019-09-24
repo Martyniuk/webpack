@@ -1,5 +1,5 @@
 module.exports = api => {
-  console.log("top babel");
+  // console.log("top babel");
   // cache babel config
   const env = api.env();
   // api.cache.using(() => env === 'development');
