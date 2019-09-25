@@ -1,0 +1,1 @@
+export default 'Async Text!!!! ✓';

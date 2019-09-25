@@ -1,6 +1,7 @@
+// Core
 const webpack = require("webpack");
 const chalk = require("chalk");
-
+// Instruments
 const getProdConfig = require("./config/webpack.prod");
 
 const compiler = webpack(getProdConfig());

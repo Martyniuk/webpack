@@ -1,0 +1,5 @@
+@import '../../theme/breakpoints.css';
+
+.loading {
+    color: orange;
+}

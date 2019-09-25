@@ -1,12 +1,34 @@
 // Instruments
 const chalk = require("chalk");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 exports.optimizeModules = () => {
   console.log(chalk.greenBright("< ---- Optimize Modules triggered"));
 
   return {
     minimize: false, // <-- Minification of JS
-    // minimizer:               <-- // ability to provide additional minimizer for code
+    minimizer: (() => {
+      console.log(chalk.redBright("< ==== ExpeliANUS!")); // test purpose only
+      return [
+        new UglifyJsPlugin({
+          cache: false,
+          sourceMap: true,
+          parallel: true,
+          extractComments: true,
+          uglifyOptions: {
+            warnings: false,
+            parse: {},
+            compress: {},
+            mangle: true, // Note `mangle.properties` is `false` by default.
+            output: null,
+            toplevel: false,
+            nameCache: null,
+            ie8: false,
+            keep_fnames: false
+          }
+        })
+      ];
+    })(), // <-- // ability to provide additional minimizer for code
     noEmitOnErrors: true, // <-- skip the emitting phase whenever there are errors while compiling
     removeEmptyChunks: true, // <-- detect and remove chunks which are empty
     mergeDuplicateChunks: true, // <-- merge chunks which contain the same modules

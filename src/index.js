@@ -1,28 +1,47 @@
-// --->   CSS
+// ----> CSS
+import "./theme/init.css";
+// ----> React
+import "./components/SkillMeter";
 
-// ---> REACT
-// import "./components";
+// import './components/Carousel';
 
 /* tree shaking */
-import { first } from "lodash-es";
-
-console.log("<--", first);
+// import { first } from 'lodash-es';
+// console.log('→ _', first);
 /* tree shaking */
 
+/* javascript */
+// import './simple-components/javascript';
+/* javascript */
+
 /* siri */
-// import "./components/siri";
+// import './siri';
 /* siri */
 
-// --->  DOM
+/* dom */
+// import component from './simple-components/dom';
 
-// function addChild() {
-//   const element = document.createElement("div");
-//   element.innerHTML = "Teexxt";
+// let element = component();
 
-//   return element;
+// document.body.appendChild(element);
+
+// if (module.hot) {
+//     module.hot.accept('./simple-components/dom', function() {
+//         document.body.removeChild(element);
+//         element = component();
+//         document.body.appendChild(element);
+//     });
+// }
+/* dom */
+
+/* Env variables */
+// if (__DEV__) {
+//     const a = 2 + 2;
+//     console.log('→ a', a);
+//     // hot
+//     // logging
 // }
 
-// ENV Variables
-// console.log("__ENV__", __ENV__);
-// console.log("__DEV__", __DEV__);
-// console.log("__PROD__", __PROD__);
+// console.log('→ __ENV__', __ENV__);
+// console.log('→ __DEV__', __DEV__);
+// console.log('→ __PROD__', __PROD__);

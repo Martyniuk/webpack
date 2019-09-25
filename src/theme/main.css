@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--color2);
+    background-image: url('./images/leaves-pattern.png');
+    color: var(--color1);
+    font-size: 33px;
+    font-weight: 600;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    /* font-family: Caveat; */
+
+    & h1 {
+        cursor: pointer;
+        user-select: none;
+    }
+}

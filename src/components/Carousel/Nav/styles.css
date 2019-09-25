@@ -1,0 +1,21 @@
+.nav {
+    display: flex;
+    justify-content: center;
+    border: 1px solid grey;
+    padding: 4px;
+
+    & a {
+        color: var(--color1);
+        padding: 4px;
+        min-width: max-content;
+        border: 1px solid currentColor;
+        border-radius: 7px;
+        font-size: 18px;
+        text-decoration: none;
+        margin-right:7px;
+
+        &:last-child {
+            margin-right:0px;
+        }
+    }
+}
