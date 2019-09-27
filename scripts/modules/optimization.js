@@ -1,6 +1,8 @@
 // Instruments
 const chalk = require("chalk");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+// Instruments for Image optimization
+const ImageminWebpackPlugin = require("imagemin-webpack");
 
 exports.optimizeModules = () => {
   console.log(chalk.greenBright("< ---- Optimize Modules triggered"));
@@ -41,4 +43,13 @@ exports.optimizeModules = () => {
     usedExports: true, // < -- determine used exports for each module
     sideEffects: true // < -- recognise the sideEffects flag in package.json or rules to skip over modules which are flagged to contain no side effects when exports are not used
   };
+};
+
+exports.optimizeImages = () => {
+  console.log(chalk.magentaBright("< ---- Optimize Images triggered"));
+  return new ImageminWebpackPlugin({
+    imageminOptions: {
+      plugins: []
+    }
+  });
 };

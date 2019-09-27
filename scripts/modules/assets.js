@@ -15,7 +15,7 @@ exports.loadSvgForJS = () => {
     use: [
       "@svgr/webpack",
       {
-        loader: "file-loader", // basically hust moves files to below described in "options"
+        loader: "file-loader", // basically just moves files to below described in "options"
         options: {
           //   name: `./images/${CHUNK_NAME_ASSET}` // where to put your files
           name: "./images/[name].[ext]"
@@ -35,7 +35,7 @@ exports.loadSvgForCSS = () => {
     },
     use: [
       {
-        loader: "file-loader", // basically hust moves files to below described in "options"
+        loader: "file-loader", // basically just moves files to below described in "options"
         options: {
           //   name: `./images/${CHUNK_NAME_ASSET}` // where to put your files
           name: "./images/[name].[ext]"
@@ -52,7 +52,7 @@ exports.loadImages = () => {
     test: /\.(png|jpg|jpeg)$/,
     use: [
       {
-        loader: "file-loader", // basically hust moves files to below described in "options"
+        loader: "file-loader", // basically just moves files to below described in "options"
         options: {
           //   name: `./images/${CHUNK_NAME_ASSET}` // where to put your files
           name: "./images/[name].[ext]"

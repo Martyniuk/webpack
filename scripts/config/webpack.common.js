@@ -27,7 +27,6 @@ module.exports = () => {
     module: {
       rules: [
         loadJavaScript(),
-        loadCSS(),
         loadFonts(),
         loadImages(),
         loadSvgForCSS(),

@@ -9,13 +9,21 @@ const {
   connectBundleAnalyzer
 } = require("../modules/utils");
 const { optimizeModules } = require("../modules/optimization");
+const { loadProdCSS, connectMiniCssExtractPlugin } = require("../modules/css");
 
 module.exports = () => {
   return merge(getCommonConfig(), {
-    mode: "none", // none interim for testing purpose
+    mode: "production", // none interim for testing purpose
     entry: SOURCE,
-    optimization: optimizeModules(),
+    // optimization: optimizeModules(),
     devtool: false,
-    plugins: [cleanBuildDirectory(), connectBundleAnalyzer()]
+    module: {
+      rules: [loadProdCSS()]
+    },
+    plugins: [
+      cleanBuildDirectory(),
+      connectBundleAnalyzer(),
+      connectMiniCssExtractPlugin()
+    ]
   });
 };

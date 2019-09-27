@@ -2,10 +2,12 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const env = require("postcss-preset-env");
 const fontMagician = require("postcss-font-magician");
+const cssnano = require("cssnano");
 // Instrumets
 const chalk = require("chalk");
 
-exports.loadCSS = () => {
+// BELOW IS INITIAL VERSION OF loadCSS and is DEPRECATED!!!
+const __DEPRECATED__loadCSS = () => {
   console.log(chalk.blueBright("< ---- CSS Loaded"));
 
   return {
@@ -39,36 +41,55 @@ exports.loadCSS = () => {
   };
 };
 
-exports.loadPostCSS = ({ sourceMap = false } = { sourceMap: false }) => {
+const loadPostCSS = (
+  { sourceMap = false, minimize = false } = {
+    sourceMap: false,
+    minimize: false
+  }
+) => {
   console.log(chalk.greenBright("< \t << ---- PostCSS loader in loadCSS"));
 
   const plugins = [
     env({
       stage: 0
-    }),
+    }), // first
     fontMagician({
-      protocol: "https:" // what it does? - generates fontface automaticaly, magic?
+      protocol: "https:" // second -- what it does? - generates fontface automaticaly, magic?
     })
   ];
 
+  if (minimize) {
+    const cssnanoOptions = {
+      preset: [
+        "default",
+        {
+          normalizeUrl: false
+        }
+      ]
+    };
+    // plugins.push(cssnano()); // third
+    plugins.push(cssnano(cssnanoOptions)); // third
+  }
+
   return {
     loader: "postcss-loader",
-    optnios: {
+    options: {
       plugins,
       sourceMap
     }
   };
 };
 
-exports.loadCSS = ({ sourceMap = false } = { sourceMap: false }) => {
+const loadCSS = ({ sourceMap = false } = { sourceMap: false }) => {
   console.log(chalk.blueBright("< \t << ---- CSS loader in loadCSS"));
 
   return {
     loader: "css-loader",
-    optnios: {
-      modules: true,
+    options: {
       importLoaders: 1,
-      localIdentName: "[path][name]__[local]--[hash:base64:5]",
+      modules: {
+        localIdentName: "[path][name]__[local]--[hash:base64:5]"
+      },
       sourceMap
     }
   };
@@ -82,7 +103,7 @@ exports.loadDevCSS = () => {
     use: [
       "style-loader",
       loadCSS({ sourceMap: true }), // css-loader
-      loadPostCss({ sourceMap: true /*minimize: false*/ }) // postcss-loader
+      loadPostCSS({ sourceMap: true, minimize: false }) // postcss-loader
     ]
   };
 };
@@ -96,7 +117,7 @@ exports.loadProdCSS = () => {
       MiniCssExtractPlugin.loader,
       "cache-loader",
       loadCSS({ sourceMap: false }), // css-loader
-      loadPostCss({ sourceMap: false, minimize: true }) // postcss-loader
+      loadPostCSS({ sourceMap: false, minimize: true }) // postcss-loader
     ]
   };
 };
