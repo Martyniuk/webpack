@@ -8,7 +8,7 @@ const {
   cleanBuildDirectory,
   connectBundleAnalyzer
 } = require("../modules/utils");
-const { optimizeModules } = require("../modules/optimization");
+const { optimizeModules, optimizeImages } = require("../modules/optimization");
 const { loadProdCSS, connectMiniCssExtractPlugin } = require("../modules/css");
 
 module.exports = () => {
@@ -23,7 +23,8 @@ module.exports = () => {
     plugins: [
       cleanBuildDirectory(),
       connectBundleAnalyzer(),
-      connectMiniCssExtractPlugin()
+      connectMiniCssExtractPlugin(),
+      optimizeImages()
     ]
   });
 };

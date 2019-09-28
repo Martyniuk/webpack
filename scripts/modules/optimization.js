@@ -47,9 +47,25 @@ exports.optimizeModules = () => {
 
 exports.optimizeImages = () => {
   console.log(chalk.magentaBright("< ---- Optimize Images triggered"));
+
   return new ImageminWebpackPlugin({
     imageminOptions: {
-      plugins: []
+      plugins: [
+        [
+          "mozjpeg",
+          {
+            progressive: true,
+            quality: 60
+          }
+        ],
+        [
+          "pngquant",
+          {
+            quality: 60
+          }
+        ],
+        "svgo"
+      ]
     }
   });
 };
