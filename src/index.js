@@ -1,7 +1,7 @@
 // ----> CSS
 import "./theme/init.css";
 // ----> React
-import "./components/SkillMeter";
+// import "./components/SkillMeter";
 
 // import './components/Carousel';
 
@@ -11,7 +11,8 @@ import "./components/SkillMeter";
 /* tree shaking */
 
 /* javascript */
-// import './simple-components/javascript';
+// import "./simple-components/javascript";
+import "./simple-components/dom";
 /* javascript */
 
 /* siri */

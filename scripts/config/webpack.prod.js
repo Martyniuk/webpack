@@ -13,9 +13,9 @@ const { loadProdCSS, connectMiniCssExtractPlugin } = require("../modules/css");
 
 module.exports = () => {
   return merge(getCommonConfig(), {
-    mode: "production", // none interim for testing purpose
+    mode: "none", // none interim for testing purpose
     entry: SOURCE,
-    // optimization: optimizeModules(),
+    optimization: optimizeModules(),
     devtool: false,
     module: {
       rules: [loadProdCSS()]

@@ -5,6 +5,7 @@ const fontMagician = require("postcss-font-magician");
 const cssnano = require("cssnano");
 // Instrumets
 const chalk = require("chalk");
+const { CHUNK_NAME_CSS } = require("../constants");
 
 // BELOW IS INITIAL VERSION OF loadCSS and is DEPRECATED!!!
 const __DEPRECATED__loadCSS = () => {
@@ -125,7 +126,8 @@ exports.loadProdCSS = () => {
 /* ----------------------------- PLUGINS ------------------------------------*/
 exports.connectMiniCssExtractPlugin = () => {
   return new MiniCssExtractPlugin({
-    filename: "css/styles.css"
-    // chunkFilename: "css/style.css"
+    filename: `./css/${CHUNK_NAME_CSS}`,
+    // filename: "css/styles.css"
+    chunkFilename: `./css/${CHUNK_NAME_CSS}`
   });
 };

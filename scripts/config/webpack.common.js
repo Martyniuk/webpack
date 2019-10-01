@@ -3,9 +3,8 @@ const merge = require("webpack-merge");
 
 // Instruments
 const chalk = require("chalk");
-const { BUILD } = require("../constants");
+const { BUILD, CHUNK_NAME_JS } = require("../constants");
 const { loadJavaScript } = require("../modules/javascript");
-const { loadCSS } = require("../modules/css");
 const {
   loadImages,
   loadFonts,
@@ -18,11 +17,15 @@ const { defineEnvVariables } = require("../modules/utils");
 module.exports = () => {
   console.log(chalk.cyanBright("< ---- Common webpack config"));
   const { NODE_ENV } = process.env;
+  const IS_DEVELOPMENT = NODE_ENV === "development";
 
   return merge({
     output: {
       path: BUILD,
-      filename: "./js/bundle.js"
+      filename: IS_DEVELOPMENT ? "[name].js" : `./js/${CHUNK_NAME_JS}`,
+      chunkFilename: IS_DEVELOPMENT ? "[name].js" : `./js/${CHUNK_NAME_JS}`,
+      hashDigestLength: 5
+      // filename: "./js/bundle.js"
     },
     module: {
       rules: [

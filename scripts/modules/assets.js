@@ -2,7 +2,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // Instrumets
 const chalk = require("chalk");
-const { STATIC } = require("../constants");
+const { STATIC, CHUNK_NAME_ASSET } = require("../constants");
 
 exports.loadSvgForJS = () => {
   console.log(chalk.green("< ---- SVGs for JS Loaded"));
@@ -18,7 +18,7 @@ exports.loadSvgForJS = () => {
         loader: "file-loader", // basically just moves files to below described in "options"
         options: {
           //   name: `./images/${CHUNK_NAME_ASSET}` // where to put your files
-          name: "./images/[name].[ext]"
+          name: `./images/${CHUNK_NAME_ASSET}`
         }
       }
     ]
@@ -38,7 +38,7 @@ exports.loadSvgForCSS = () => {
         loader: "file-loader", // basically just moves files to below described in "options"
         options: {
           //   name: `./images/${CHUNK_NAME_ASSET}` // where to put your files
-          name: "./images/[name].[ext]"
+          name: `./images/${CHUNK_NAME_ASSET}`
         }
       }
     ]
@@ -55,7 +55,7 @@ exports.loadImages = () => {
         loader: "file-loader", // basically just moves files to below described in "options"
         options: {
           //   name: `./images/${CHUNK_NAME_ASSET}` // where to put your files
-          name: "./images/[name].[ext]"
+          name: `./images/${CHUNK_NAME_ASSET}`
         }
       }
     ]
@@ -72,7 +72,7 @@ exports.loadFonts = () => {
         loader: "file-loader", // basically hust moves files to below described in "options"
         options: {
           //   name: `./fonst/${CHUNK_NAME_ASSET}` // where to put your files
-          name: "./fonst/[name].[ext]"
+          name: `./fonts/${CHUNK_NAME_ASSET}`
         }
       }
     ]
