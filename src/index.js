@@ -3,7 +3,7 @@ import "./theme/init.css";
 // ----> React
 // import "./components/SkillMeter";
 
-// import './components/Carousel';
+import "./components/Carousel";
 
 /* tree shaking */
 // import { first } from 'lodash-es';
@@ -12,7 +12,7 @@ import "./theme/init.css";
 
 /* javascript */
 // import "./simple-components/javascript";
-import "./simple-components/dom";
+// import "./simple-components/dom";
 /* javascript */
 
 /* siri */

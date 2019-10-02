@@ -1,1 +1,1 @@
-export default 'Async Text!!!! ✓';
+export default "Async Text!!!!!!! ✓";
