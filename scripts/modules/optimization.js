@@ -41,7 +41,8 @@ exports.optimizeModules = () => {
     concatenateModules: true, // <--  find segments of the module graph which can be safely concatenated into a single module
     providedExports: true, // < --  figure out which exports are provided by modules to generate more efficient code for export * from ...
     usedExports: true, // < -- determine used exports for each module
-    sideEffects: true // < -- recognise the sideEffects flag in package.json or rules to skip over modules which are flagged to contain no side effects when exports are not used
+    sideEffects: true, // < -- recognise the sideEffects flag in package.json or rules to skip over modules which are flagged to contain no side effects when exports are not used
+    runtimeChunk: true
   };
 };
 

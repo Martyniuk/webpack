@@ -24,7 +24,8 @@ module.exports = () => {
       path: BUILD,
       filename: IS_DEVELOPMENT ? "[name].js" : `./js/${CHUNK_NAME_JS}`,
       chunkFilename: IS_DEVELOPMENT ? "[name].js" : `./js/${CHUNK_NAME_JS}`,
-      hashDigestLength: 5
+      hashDigestLength: 5,
+      publicPath: "/"
       // filename: "./js/bundle.js"
     },
     module: {

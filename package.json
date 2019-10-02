@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cross-env-shell NODE_ENV=production node \"./scripts/build.js\"",
     "start": "cross-env-shell NODE_ENV=development node \"./scripts/start.js\"",
-    "build:analyze": "run-s build analyze",
+    "build:analyze": "cross-env-shell ANALYZE=true run-s build analyze",
     "analyze": "webpack-bundle-analyzer \"./dist/stats.json\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

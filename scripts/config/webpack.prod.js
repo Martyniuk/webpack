@@ -12,6 +12,8 @@ const { optimizeModules, optimizeImages } = require("../modules/optimization");
 const { loadProdCSS, connectMiniCssExtractPlugin } = require("../modules/css");
 
 module.exports = () => {
+  const { ANALYZE } = process.env;
+
   return merge(getCommonConfig(), {
     mode: "none", // none interim for testing purpose
     entry: SOURCE,
