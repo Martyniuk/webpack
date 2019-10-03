@@ -10,7 +10,6 @@ exports.optimizeModules = () => {
   return {
     minimize: false, // <-- Minification of JS
     minimizer: (() => {
-      console.log(chalk.redBright("< ==== ExpeliANUS!")); // test purpose only
       return [
         new UglifyJsPlugin({
           cache: false,

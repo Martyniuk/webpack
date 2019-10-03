@@ -32,6 +32,7 @@ const getDevConfig = require("./config/webpack.dev");
     // total Silence
     noInfo: true,
     before: (app, server) => {
+      debugger;
       app.use(waitPage(server, { theme: "material" }));
     },
     after: app => {

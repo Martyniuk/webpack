@@ -20,9 +20,13 @@ exports.defineEnvVariables = (variables = {}) => {
 exports.connectBundleAnalyzer = () => {
   console.log(chalk.cyanBright("< ---- Webpack Bundle Analyzer"));
 
-  return new BundleAnalyzerPlugin({
-    analyzerMode: "disabled",
-    openAnalyzer: false,
-    generateStatsFile: true
-  });
+  return {
+    plugins: [
+      new BundleAnalyzerPlugin({
+        analyzerMode: "disabled",
+        openAnalyzer: false,
+        generateStatsFile: true
+      })
+    ]
+  };
 };

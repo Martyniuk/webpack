@@ -14,19 +14,22 @@ const { loadProdCSS, connectMiniCssExtractPlugin } = require("../modules/css");
 module.exports = () => {
   const { ANALYZE } = process.env;
 
-  return merge(getCommonConfig(), {
-    mode: "none", // none interim for testing purpose
-    entry: SOURCE,
-    optimization: optimizeModules(),
-    devtool: false,
-    module: {
-      rules: [loadProdCSS()]
+  return merge(
+    getCommonConfig(),
+    {
+      mode: "none", // none interim for testing purpose
+      entry: SOURCE,
+      optimization: optimizeModules(),
+      devtool: false,
+      module: {
+        rules: [loadProdCSS()]
+      },
+      plugins: [
+        cleanBuildDirectory(),
+        connectMiniCssExtractPlugin(),
+        optimizeImages()
+      ]
     },
-    plugins: [
-      cleanBuildDirectory(),
-      connectBundleAnalyzer(),
-      connectMiniCssExtractPlugin(),
-      optimizeImages()
-    ]
-  });
+    ANALYZE && connectBundleAnalyzer()
+  );
 };
